@@ -1,0 +1,16 @@
+FROM node:erbium-alpine
+WORKDIR /usr/src/app
+
+RUN npm install -gs lerna
+
+COPY ./packages/api/ ./packages/api
+COPY ./packages/common/ ./packages/common
+
+COPY ./lerna.json ./
+COPY ./package.json ./
+
+RUN lerna bootstrap
+
+EXPOSE 3000
+
+CMD ["npm", "--prefix", "./packages/api", "start"]
