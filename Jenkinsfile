@@ -2,7 +2,9 @@ pipeline {
   agent any;
   stages {
     stage('Initialisation') {
-      sh 'docker ps -aq'
+      steps {
+        sh 'docker ps -aq'
+      }
     }
   }
 }
