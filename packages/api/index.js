@@ -1,15 +1,15 @@
 const express = require('express');
 const { urlencoded, json } = require('body-parser');
-const { validateRequest } = require('common');
+const { withRequestUuid } = require('@api/common/release');
 
 const app = express();
 
 app.use(urlencoded({ extended: true }));
 app.use(json());
-app.use(validateRequest);
+app.use(withRequestUuid);
 
 app.get('/', (req, res) => {
-  return res.json({ user_id: req.user });
+  return res.json({ user_id: req.requestId });
 });
 
 app.listen(3000, () => {

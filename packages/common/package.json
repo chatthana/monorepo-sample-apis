@@ -1,9 +1,12 @@
 {
-  "name": "common",
+  "name": "@api/common",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "express": "^4.17.1",
     "uuid": "^7.0.3"
   }
