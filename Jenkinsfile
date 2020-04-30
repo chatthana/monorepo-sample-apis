@@ -2,7 +2,7 @@ pipeline {
   environment {
     registry = "chatthana/monorepo-app"
     dockerHubCredentialId = "docker-hub-personal"
-    appName = "app1"
+    appName = "api"
   }
 
   agent any
@@ -18,7 +18,7 @@ pipeline {
         echo "COMMIT = $GIT_COMMIT"
         script {
           docker.withRegistry("", "docker-hub-personal") {
-            def image = docker.build registry + ":cidev"
+            def image = docker.build registry + ":cidev", "-f Dockerfile.$appName ."
             image.push()
           }
         }
