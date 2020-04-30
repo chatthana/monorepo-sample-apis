@@ -1,9 +1,20 @@
 pipeline {
-  agent any;
+  environment {
+    registry = "chatthana/monorepo-app"
+    dockerHubCredentialId = "docker-hub-personal"
+  }
+  agent any
   stages {
-    stage('Initialisation') {
+    stage("Initialise project") {
       steps {
-        sh 'docker ps -aq'
+        sh "ls -lah"
+      }
+    }
+    stage('Build image') {
+      steps {
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
       }
     }
   }
