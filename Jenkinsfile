@@ -2,7 +2,7 @@ pipeline {
   environment {
     registry = "chatthana/monorepo-app"
     dockerHubCredentialId = "docker-hub-personal"
-    appName = "api"
+    appName = "api2"
   }
 
   agent any

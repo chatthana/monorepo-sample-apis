@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "start:api": "cd ./packages/api && node index.js",
+    "start:api2": "cd ./packages/api2 && node index.js",
     "release:common": "lerna exec --scope=@api/common -- babel src -d release"
   },
   "devDependencies": {
