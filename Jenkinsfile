@@ -13,7 +13,7 @@ pipeline {
         sh "ls -lah"
       }
     }
-    stage('Build image') 
+    stage('Build image') {
       steps {
         script {
           docker.build registry + ":$BUILD_NUMBER"
