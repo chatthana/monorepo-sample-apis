@@ -2,6 +2,7 @@ pipeline {
   environment {
     registry = "chatthana/monorepo-app"
     dockerHubCredentialId = "docker-hub-personal"
+    appName = "app1"
   }
   agent any
   stages {
@@ -13,7 +14,7 @@ pipeline {
     stage('Build image') {
       steps {
         script {
-          docker.build registry + ":$BUILD_NUMBER"
+          docker.build registry + ":${BUILD_NUMBER}", "-f Dockerfile.${appName}"
         }
       }
     }
