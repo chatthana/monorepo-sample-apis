@@ -11,10 +11,10 @@ pipeline {
         sh "ls -lah"
       }
     }
-    stage('Build image') {
+    stage('Build image') 
       steps {
         script {
-          docker.build registry + ":${BUILD_NUMBER}", "-f Dockerfile.${appName}"
+          docker.build("${registry}:${BUILD_NUMBER}", "-f Dockerfile.${appName}")
         }
       }
     }
