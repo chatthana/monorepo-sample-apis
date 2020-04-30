@@ -15,8 +15,12 @@ pipeline {
     }
     stage('Build image') {
       steps {
+        echo "COMMIT = $GIT_COMMIT"
         script {
-          docker.build registry + ":$BUILD_NUMBER"
+          docker.withRegistry("", "docker-hub-personal") {
+            def image = docker.build registry + ":cidev"
+            image.push()
+          }
         }
       }
     }
