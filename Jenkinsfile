@@ -6,19 +6,19 @@ pipeline {
   }
 
   agent any
-
+  
   stages {
     stage("Initialise project") {
       steps {
         sh "ls -lah"
       }
     }
-    // stage('Build image') 
-    //   steps {
-    //     script {
-    //       docker.build registry + ":${BUILD_NUMBER}"
-    //     }
-    //   }
-    // }
+    stage('Build image') 
+      steps {
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
   }
 }
