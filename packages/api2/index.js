@@ -9,7 +9,7 @@ app.use(json());
 app.use(validateRequest);
 
 app.get('/', (req, res) => {
-  return res.json({ message: 'Success' });
+  return res.json({ message: 'Success', data: { message: process.env.SAMPLE_API_DATA || 'Sample Data (Non-Existing)' } });
 });
 
 app.listen(3100, () => {
